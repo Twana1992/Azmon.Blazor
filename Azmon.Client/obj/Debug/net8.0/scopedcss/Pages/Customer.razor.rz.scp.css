@@ -1,0 +1,258 @@
+/* From Uiverse.io by nima-mollazadeh */
+.button[b-awsgoup5v0] {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+    padding: 14px 25px;
+    border-radius: 10px;
+    font-size: 1.0em;
+    cursor: pointer;
+}
+
+    .button span[b-awsgoup5v0] {
+        position: relative;
+        z-index: 1;
+    }
+
+    .button[b-awsgoup5v0]::before {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        background: #272727;
+        border-radius: 9px;
+        transition: 0.5s;
+    }
+
+    .button:hover[b-awsgoup5v0]::before {
+        opacity: 0.7;
+    }
+
+    .button[b-awsgoup5v0]::after {
+        content: "";
+        position: absolute;
+        inset: 0px;
+        background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+        border-radius: 9px;
+        transition: 0.5s;
+        opacity: 0;
+        filter: blur(20px);
+    }
+
+    .button:hover[b-awsgoup5v0]:after {
+        opacity: 1;
+    }
+
+/* Cards */
+.card[b-awsgoup5v0] {
+    max-width: 300px;
+    border-radius: 1rem;
+    background-color: rgba(31, 41, 55, 1);
+    padding: 1rem;
+}
+.cards-wrapper[b-awsgoup5v0] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* المسافة بين الكروت */
+    justify-content: start; /* يمكن تغييره إلى start/end/space-between حسب حاجتك */
+    padding: 10px;
+}
+.infos[b-awsgoup5v0] {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    grid-gap: 1rem;
+    gap: 1rem;
+}
+.info[b-awsgoup5v0] {
+    height: 7rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.name[b-awsgoup5v0] {
+    font-size: 1.0rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    margin-bottom: 2px;
+    max-width: 150px; /* أو أي عرض يناسب البطاقة */
+}
+.function[b-awsgoup5v0] {
+    margin-bottom: 2px;
+    margin-top: 0px;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgba(156, 163, 175, 1);
+}
+.stats[b-awsgoup5v0] {
+    width: 100%;
+    margin-top:2px;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgba(0, 0, 0, 1);
+}
+.flex[b-awsgoup5v0] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 4px;
+}
+.state-value[b-awsgoup5v0] {
+    font-weight: 700;
+    color: rgb(118, 36, 194);
+}
+.request[b-awsgoup5v0] {
+    margin-top: 1.5rem;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    transition: all .3s ease;
+}
+.delete[b-awsgoup5v0] {
+    margin-top: 1.5rem;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    transition: all .3s ease;
+}
+.request:hover[b-awsgoup5v0] {
+    background-color: rgb(118, 36, 194);
+    color: #fff;
+}
+.delete:hover[b-awsgoup5v0] {
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+}
+.button-group[b-awsgoup5v0] {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/*loading*/
+.loader[b-awsgoup5v0] {
+    --uib-size: 2.8rem;
+    --uib-speed: .9s;
+    --uib-color: #183153;
+    position: fixed; /* to center on screen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* center precisely */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    z-index: 9999; /* to appear on top */
+}
+
+.loaders[b-awsgoup5v0] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+}
+
+    .loaders[b-awsgoup5v0]::before {
+        content: '';
+        height: 20%;
+        width: 20%;
+        border-radius: 50%;
+        background-color: var(--uib-color);
+        transform: scale(0);
+        opacity: 0.5;
+        animation: pulse0112-b-awsgoup5v0 calc(var(--uib-speed) * 1.111) ease-in-out infinite;
+        box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);
+        padding-bottom: 222px;
+    }
+
+    .loaders:nth-child(2)[b-awsgoup5v0] {
+        transform: rotate(45deg);
+    }
+
+        .loaders:nth-child(2)[b-awsgoup5v0]::before {
+            animation-delay: calc(var(--uib-speed) * -0.875);
+        }
+
+    .loaders:nth-child(3)[b-awsgoup5v0] {
+        transform: rotate(90deg);
+    }
+
+        .loaders:nth-child(3)[b-awsgoup5v0]::before {
+            animation-delay: calc(var(--uib-speed) * -0.75);
+        }
+
+    .loaders:nth-child(4)[b-awsgoup5v0] {
+        transform: rotate(135deg);
+    }
+
+        .loaders:nth-child(4)[b-awsgoup5v0]::before {
+            animation-delay: calc(var(--uib-speed) * -0.625);
+        }
+
+    .loaders:nth-child(5)[b-awsgoup5v0] {
+        transform: rotate(180deg);
+    }
+
+        .loaders:nth-child(5)[b-awsgoup5v0]::before {
+            animation-delay: calc(var(--uib-speed) * -0.5);
+        }
+
+    .loaders:nth-child(6)[b-awsgoup5v0] {
+        transform: rotate(225deg);
+    }
+
+        .loaders:nth-child(6)[b-awsgoup5v0]::before {
+            animation-delay: calc(var(--uib-speed) * -0.375);
+        }
+
+.dot-spinner__dot:nth-child(7)[b-awsgoup5v0] {
+    transform: rotate(270deg);
+}
+
+.loaders:nth-child(7)[b-awsgoup5v0]::before {
+    animation-delay: calc(var(--uib-speed) * -0.25);
+}
+
+.loaders:nth-child(8)[b-awsgoup5v0] {
+    transform: rotate(315deg);
+}
+
+    .loaders:nth-child(8)[b-awsgoup5v0]::before {
+        animation-delay: calc(var(--uib-speed) * -0.125);
+    }
+
+@keyframes pulse0112-b-awsgoup5v0 {
+    0%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,11 @@
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\bin\Debug\net8.0\Azmon.Core.deps.json
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\bin\Debug\net8.0\Azmon.Core.dll
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\bin\Debug\net8.0\Azmon.Core.pdb
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.AssemblyInfo.cs
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.dll
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\refint\Azmon.Core.dll
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.pdb
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\ref\Azmon.Core.dll

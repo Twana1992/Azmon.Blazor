@@ -1,0 +1,40 @@
+﻿@page "/counter"
+@inject Service.CustomerService CustomerService
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+@if (customer == null)
+{
+    <p>Loading..</p>
+}
+else
+{
+    <div class="cards-wrapper">
+        @foreach (var cus in customer)
+        {
+            <div class="card">
+                <div class="infos">
+                    <div class="info">
+                        <div>
+                            <p class="name" title="@cus.Name">@cus.Name</p>
+                            <p class="function">@cus.Phone</p>
+                            <p class="function">@cus.Address</p>
+                        </div>
+                        <div class="stats">
+                            <p class="flex flex-col"> IQD <span class="state-value"> @cus.MainAmount </span> </p>
+                            <p class="flex"> $ <span class="state-value">@cus.sec_Amount </span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="request" type="button">Edit</button>
+                    <button class="delete" type="button">Delete</button>
+                </div>
+
+            </div>
+        }
+    </div>
+
+}
+

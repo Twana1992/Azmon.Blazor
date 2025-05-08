@@ -1,0 +1,112 @@
+﻿@page "/customer"
+@inject NavigationManager Navigation
+@inject Service.CustomerService CustomerService
+<h3>Customer</h3>
+
+
+<!-- Search Section -->
+<input @bind="searchQuery" placeholder="Search..." />
+<button class="button me-2" @onclick="SearchCustomers">
+    <span>Search</span>
+</button>
+@if (formState == false)
+{
+    <button class="btn btn-primary" @onclick="ChangeState">Add</button>
+}
+@if (formState == true)
+{
+    <button class="btn btn-danger" @onclick="ChangeState">Close</button>
+
+}
+
+<hr/>
+@if (formState == true)
+{
+    <!-- Form for Add/Edit -->
+    <EditForm Model="currentCustomer" OnValidSubmit="SaveCustomers">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label>Name:</label>
+            <InputText class="form-control" @bind-Value="currentCustomer.Name" />
+        </div>
+        <div class="form-group">
+            <label>Address:</label>
+            <InputText class="form-control" @bind-Value="currentCustomer.Address" />
+        </div>
+        <div class="form-group">
+            <label>Phone:</label>
+            <InputText class="form-control" @bind-Value="currentCustomer.Phone" />
+        </div>
+
+        <div class="form-group">
+            <label>Note:</label>
+            <InputText class="form-control" @bind-Value="currentCustomer.Note" />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">
+            @(currentCustomer.Id == 0 ? "Add" : "Update")
+        </button>
+
+        @if (currentCustomer.Id != 0)
+        {
+            <button class="btn btn-secondary ms-2" @onclick="CancelEdit">Cancel</button>
+        }
+    </EditForm>
+    <hr />
+
+}
+
+
+
+<!-- Employee List -->
+@if (customer == null)
+{
+    <div class="loader">
+        <div class="loaders"></div>
+        <div class="loaders"></div>
+        <div class="loaders"></div>
+        <div class="loaders"></div>
+        <div class="loaders"></div>
+        <div class="loaders"></div>
+        <div class="loaders"></div>
+        <div class="loaders"></div>
+    </div>
+
+}
+else if (customer.Count == 0)
+{
+    <p><em>No customer found.</em></p>
+}
+else
+{
+    <div class="cards-wrapper">
+        @foreach (var cus in customer)
+        {
+            <div class="card">
+                <div class="infos">
+                    <div class="info">
+                        <div>
+                            <p class="name" title="@cus.Name">@cus.Name</p>
+                            <p class="function">@cus.Phone</p>
+                            <p class="function">@cus.Address</p>
+                            <p class="function">@cus.Note</p>
+                            <p class="function">@cus.AddedDate</p>
+                        </div>
+                        <div class="stats">
+                            <p class="flex flex-col"> IQD <span class="state-value"> @cus.MainAmount </span> </p>
+                            <p class="flex"> $ <span class="state-value">@cus.sec_Amount </span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="request" type="button" @onclick="()=>LoadForEdit(cus)">Edit</button>
+                    <button class="delete" type="button" @onclick="()=>DeleteCustomers(cus.Id)">Delete</button>
+                    <button class="request" type="button" @onclick="()=> NavigateToDetail(cus.Id)">Detail</button>
+                </div>
+
+            </div>
+        }
+    </div>
+}
