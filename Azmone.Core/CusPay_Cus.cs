@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Azmon.Core
+﻿namespace Azmon.Core
 {
     public class CusPay_Cus
     {
@@ -14,7 +8,7 @@ namespace Azmon.Core
         public string CustomerPhone { get; set; } = string.Empty;
         public decimal MainAmount { get; set; }
         public decimal sec_Amount { get; set; }
-        public string Note { get; set; } = string.Empty;    
+        public string Note { get; set; } = string.Empty;
         public DateTime AddDate { get; set; }
         public DateTime MoDate { get; set; }
     }

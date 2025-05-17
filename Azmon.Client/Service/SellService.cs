@@ -12,11 +12,11 @@ namespace Azmon.Client.Service
             _http = http;
         }
 
-        public async Task<List<Sell>?> GetAllAsync()=>
+        public async Task<List<Sell>?> GetAllAsync() =>
          await _http.GetFromJsonAsync<List<Sell>>("api/Sells");
-        
 
-        public async Task<Sell?> GetByIdAsync(int id)=>
+
+        public async Task<Sell?> GetByIdAsync(int id) =>
         await _http.GetFromJsonAsync<Sell>($"api/Sells/{id}");
 
 
@@ -40,13 +40,13 @@ namespace Azmon.Client.Service
 
 
 
-        public async Task UpdateAsync(int id, Sell sell)=>
+        public async Task UpdateAsync(int id, Sell sell) =>
          await _http.PutAsJsonAsync($"api/Sells/{id}", sell);
-           
-        
 
-        public async Task DeleteAsync(int id)=>
+
+
+        public async Task DeleteAsync(int id) =>
         await _http.DeleteAsync($"api/Sells/{id}");
-        
+
     }
 }

@@ -1,10 +1,13 @@
 ﻿@page "/customer-detail/{Id:int}"
+@inject NavigationManager NavigationManager
 @inject Service.CustomerService CustomerService
 @inject Service.Cus_PayService Cus_PayService
 @inject Service.SellService sellService
 @inject Service.SellDetailService sellDetailService
 @inject Service.ProductService ProductService
-<h3>Customer Detail</h3>
+@inject Service.ReportService ReportService
+@inject Service.CustomerBalanceService CustomerBalanceService
+<h3>Customer Info</h3>
 <hr />
 
 @if (customer == null)
@@ -22,20 +25,34 @@
 }
 else
 {
-    <div class="cards-wrapper">
-        <p><strong>Id:</strong> @customer.Id</p>
-        <p><strong>Name:</strong> @customer.Name</p>
-        <p><strong>Phone:</strong> @customer.Phone</p>
-        <p><strong>Address:</strong> @customer.Address</p>
-        <p><strong>Note:</strong> @customer.Note</p>
-        <p><strong>IQD:</strong> @customer.MainAmount</p>
-        <p><strong>USD:</strong> @customer.sec_Amount</p>
-        <p><strong>Add Date:</strong> @customer.AddedDate</p>
-        <p><strong>Update:</strong> @customer.UpdateDate</p>
+    <div class="d-flex justify-content-center pt-3" style="background-color: #f2f4f7;">
+        <div class="card shadow-sm rounded-4 p-4" style="width: 100%; max-width: 600px; background: linear-gradient(to right, #f8f9fa, #ffffff);">
+            <div class="card-body">
+                <h5 class="card-title mb-4 text-primary text-center">👤 @customer.Name</h5>
+                <div class="row">
+                    <div class="col-6 mb-2"><strong>ID:</strong> @customer.Id</div>
+                    <div class="col-6 mb-2"><strong>Phone:</strong> @customer.Phone</div>
+                    <div class="col-6 mb-2"><strong>Address:</strong> @customer.Address</div>
+                    <div class="col-6 mb-2 text-truncate" title="@customer.Note">
+                        <strong>Note:</strong> @customer.Note
+                    </div>
+                    <div class="col-6 mb-2"><strong>IQD:</strong> @customer.MainAmount</div>
+                    <div class="col-6 mb-2"><strong>USD:</strong> @customer.sec_Amount</div>
+                    <div class="col-6 mb-2"><strong>Added:</strong> @customer.AddedDate</div>
+                    <div class="col-6 mb-2"><strong>Updated:</strong> @customer.UpdateDate</div>
+                </div>
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <button class="btn btn-info text-white px-4 shadow-sm rounded-pill" @onclick="ToggleForm">
+                        <i class="bi bi-cash-coin me-1"></i> @(isPaymentModalVisible == false ? "Add Payment" : "Close Payment")
+                    </button>
+                    <button class="btn btn-success px-4 shadow-sm rounded-pill" @onclick="ToggleSellForm">
+                        <i class="bi bi-cart-plus me-1"></i> @(showSellForm == false ? "Add Sell" : "Close Sell")
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <button class="btn btn-primary mb-2" @onclick="ToggleForm">@(isPaymentModalVisible == false ? "Add Payment" : "Close Payment") </button>
-    <button class="btn btn-primary mb-2"@onclick="ToggleSellForm">@(showSellForm == false ? "Add Sell" : "Close Sell")</button>
     <hr />
     @if (isPaymentModalVisible)
     {
@@ -76,78 +93,98 @@ else
                     <div class="modal-content">
                         <div class="modal-header d-flex justify-content-between align-items-center">
                             <h5 class="modal-title">Add Sell for : @customer?.Name</h5>
-                            <button type="button" class="btn-close" aria-label="Close" @onclick="ToggleSellForm"></button>
                         </div>
 
                         <div class="modal-body">
                             <EditForm Model="newSell" OnValidSubmit="SaveSellAsync">
                                 <DataAnnotationsValidator />
                                 <ValidationSummary />
+                            <div class="mt-2">
+                                <strong>All Price : </strong> @totalPrice.ToString("0.00") @newSell.CurrencyType
+                            </div>
 
                                 <div class="row">
                                     <div class="mb-3 col-md-6">
                                         <label>Pay</label>
                                         <InputNumber class="form-control" @bind-Value="newSell.Paid" />
+                                    <ValidationMessage For="@(() => newSell.Paid)" />
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label>Currency</label>
-                                        <InputText class="form-control" @bind-Value="newSell.CurrencyType" />
+                                    <InputSelect class="form-control" @bind-Value="newSell.CurrencyType">
+                                        <option value="IQD">IQD</option>
+                                        <option value="USD">USD</option>
+                                    </InputSelect>
+                                    <ValidationMessage For="@(() => newSell.CurrencyType)" />
                                     </div>
                                 </div>
+                         
+                                <h4>Sell Detail</h4>
 
-                                <div class="mb-3">
-                                    <label>Product</label>
-                                    <select class="form-control" @bind="newDetail.ProductId">
-                                    @foreach (var p in products)
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th style="width:auto">All Price</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var entry in detailList.Select((detail, index) => new { detail, index }))
                                     {
-                                                <option value="@p.Id">@p.Name</option>
+                                        <tr @key="entry.index">
+                                            <td>
+                                                <select class="form-control" disabled>
+                                                    @foreach (var p in products)
+                                                    {
+                                                        <option value="@p.Id" selected="@(p.Id == entry.detail.ProductId)">
+                                                            @p.Name
+                                                        </option>
+                                                    }
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control" value="@entry.detail.Quantity" readonly />
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control" value="@entry.detail.Price" readonly />
+                                            </td>
+                                            <td>@(entry.detail.Price * entry.detail.Quantity)</td>
+                                            <td>
+                                                <button class="btn btn-danger btn-sm" @onclick="@(() => RemoveDetail(entry.detail))">Delete</button>
+                                            </td>
+                                        </tr>
                                     }
-                                    </select>
-                                </div>
 
-                                <div class="row">
-                                    <div class="mb-3 col-md-6">
-                                        <label>Quantity</label>
-                                        <InputNumber class="form-control" @bind-Value="newDetail.Quantity" />
-                                    </div>
-                                    <div class="mb-3 col-md-6">
-                                        <label>Price</label>
-                                        <InputNumber class="form-control" @bind-Value="newDetail.Price" />
-                                    </div>
-                                </div>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control" @onchange="e => newDetail.ProductId = int.Parse(e.Value.ToString())">
+                                                <option value="0">-- Select Product --</option>
+                                                @foreach (var p in products)
+                                                {
+                                                    <option value="@p.Id">@p.Name</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" @bind-value="newDetail.Quantity" @bind-value:event="oninput" />
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" @bind-value="newDetail.Price" @bind-value:event="oninput" />
+                                        </td>
+                                        <td>—</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" @onclick="AddDetail" type="button">Add</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                                <button type="button" class="btn btn-secondary me-2" @onclick="AddDetail">Add Detail</button>
 
-                            @if (detailList.Any())
-                            {
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Product Name</th>
-                                                    <th>Price</th>
-                                                    <th>Quantity</th>
-                                                    <th>All Price</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                        @foreach (var item in detailList)
-                                        {
-                                                        <tr>
-                                                            <td>@products.FirstOrDefault(p => p.Id == item.ProductId)?.Name</td>
-                                                            <td>@item.Price</td>
-                                                            <td>@item.Quantity</td>
-                                                            <td>@(item.Price * item.Quantity)</td>
-                                                            <td>
-                                                                <button class="btn btn-sm btn-danger" @onclick="() => RemoveDetail(item)">Delete</button>
-                                                            </td>
-                                                        </tr>
-                                        }
-                                            </tbody>
-                                        </table>
-                            }
-
-                                <button type="submit" class="btn btn-primary me-2">@((newSell.Id == 0) ? "Add" : "Update")</button>
+                                <button type="submit" class="btn btn-primary">@((newSell.Id == 0) ? "Add" : "Update")</button>
+                            <button type="button" class="btn btn-primary" aria-label="Close" @onclick="ToggleSellForm">Close</button>
                             </EditForm>
                         </div>
                     </div>
@@ -155,82 +192,117 @@ else
             </div>
     }
 
-    <div class="cards-wrapper">
+    <div class="row">
         @if (cus_Pay != null)
         {
-            <h3>Customer Payment Detail</h3>
-            <hr />
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>IQD</th>
-                        <th>USD</th>
-                        <th>Note</th>
-                        <th>Add Date</th>
-                        <th>Update</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="col-md-6 overflow-hidden" style="max-height: 400px; position: relative;">
+                <h3>
+                    Customer Payment Detail (@cus_Pay.Count())  <button class="btn btn-sm btn-info text-white" @onclick="() => PaymentReport(Id)">
+                        <i class="bi bi-file-earmark-text"></i> Report
+                    </button>
+                </h3>
+                <hr />
+                <div class="table-wrapper" style="overflow-y: auto; max-height: 350px;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>IQD</th>
+                                <th>USD</th>
+                                <th>Note</th>
+                                <th>Add Date</th>
+                                <th>Update</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in cus_Pay)
+                            {
+                                <tr>
+                                    <td>@p.MainAmount</td>
+                                    <td>@p.sec_Amount</td>
+                                    <td style="max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="@p.Note">
+                                        @p.Note
+                                    </td>
+                                    <td style="max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="@p.AddDate">
+                                        @p.AddDate.ToShortDateString()
+                                    </td>
+                                    <td style="max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="@p.ModDate">
+                                        @p.ModDate.ToShortDateString()
+                                    </td>
 
-                    @foreach (var p in cus_Pay)
-                    {
-                        <tr>
-                            <td>@p.MainAmount</td>
-                            <td>@p.sec_Amount</td>
-                            <td>@p.Note</td>
-                            <td>@p.AddDate</td>
-                            <td>@p.ModDate</td>
-                            <td>
-                                <button class="btn btn-sm btn-warning me-1" @onclick="() => EditPayment(p)">Edit</button>
-                                <button class="btn btn-sm btn-danger" @onclick="() => DeletePayment(p.Id)">Delete</button>
-                            </td>
-                        </tr>
-                    }
+                                    <td style="white-space: nowrap;">
+                                        <div style="display: flex; gap: 4px;">
+                                            <button class="btn btn-sm btn-warning" @onclick="() => EditPayment(p)">Edit</button>
+                                            <button class="btn btn-sm btn-danger" @onclick="() => DeletePayment(p.Id)">Delete</button>
+                                            <button class="btn btn-sm btn-info text-white" @onclick="() => OnePaymentReport(p.Id)">
+                                                <i class="bi bi-file-earmark-text"></i> Report
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
 
-                </tbody>
-            </table>
-        }
-        @if (cus_Pay != null && sell != null)
-        {
-            <hr />
-        }
         @if (sell != null)
         {
-            <h3>Customer Sell Detail</h3>
-            <hr />
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Price</th>
-                        <th>Paid</th>
-                        <th>Currncy Type</th>
-                        <th>Date</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="col-md-6 overflow-hidden" style="max-height: 400px; position: relative;">
+                <h3>
+                    Customer Sell Detail (@sell.Count()) <button class="btn btn-sm btn-info text-white" @onclick="() => DownloadReport(Id)">
+                        <i class="bi bi-file-earmark-text"></i> Report
+                    </button>
+                </h3>               
+                <hr />
+                <div class="table-wrapper" style="overflow-y: auto; max-height: 350px;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Price</th>
+                                <th>Paid</th>
+                                <th>Currency</th>
+                                <th>Date</th>
+                                <th>Update</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in sell)
+                            {
+                                <tr>
+                                    <td>@p.Id</td>
+                                    <td>@p.Price</td>
+                                    <td>@p.Paid</td>
+                                    <td>@p.CurrencyType</td>
+                                    <td style="max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="@p.BillDate">
+                                        @p.BillDate.ToShortDateString()
+                                    </td>
+                                    <td style="max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="@p.UpdateDate">
+                                        @p.UpdateDate.ToShortDateString()
+                                    </td>
+                                    <td style="white-space: nowrap;">
+                                        <div style="display: flex; gap: 4px;">
+                                            <button class="btn btn-sm btn-warning" @onclick="async () => await EditSell(p)">Edit</button>
+                                            <button class="btn btn-sm btn-danger" @onclick="() => DeleteSell(p.Id)">Delete</button>
+                                            <button class="btn btn-sm btn-info text-white" @onclick="() => OneReport(p.Id)">PDF</button>
+                                            <button class="btn btn-sm btn-info text-white" @onclick="() => ShowSellReport(p.Id)">
+                                                <i class="bi bi-file-earmark-text"></i> Report
+                                            </button>
+                                        </div>
+                                    </td>
 
-                    @foreach (var p in sell)
-                    {
-                        <tr>
-                            <td>@p.Id</td>
-                            <td>@p.Price</td>
-                            <td>@p.Paid</td>
-                            <td>@p.CurrencyType</td>
-                            <td>@p.BillDate</td>
-                            <td>
-                                <button class="btn btn-sm btn-warning me-1" >Edit</button>
-                                <button class="btn btn-sm btn-danger" >Delete</button>
-                            </td>
-                        </tr>
-                    }
-
-                </tbody>
-            </table>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         }
     </div>
+
 
 
 }

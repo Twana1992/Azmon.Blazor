@@ -1,6 +1,5 @@
 ﻿using Azmon.Core;
 using System.Net.Http.Json;
-using static System.Net.WebRequestMethods;
 
 namespace Azmon.Client.Service
 {

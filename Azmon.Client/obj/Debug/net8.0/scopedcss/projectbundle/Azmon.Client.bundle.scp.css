@@ -343,7 +343,6 @@ main[b-j2638y7krw] {
     gap: 1rem;
 }
 .info[b-awsgoup5v0] {
-    height: 7rem;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -358,11 +357,11 @@ main[b-j2638y7krw] {
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     max-width: 150px; /* أو أي عرض يناسب البطاقة */
 }
 .function[b-awsgoup5v0] {
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     margin-top: 0px;
     font-size: 0.75rem;
     line-height: 1rem;
@@ -392,7 +391,7 @@ main[b-j2638y7krw] {
     color: rgb(118, 36, 194);
 }
 .request[b-awsgoup5v0] {
-    margin-top: 1.5rem;
+    margin-top: 0;
     width: 100%;
     border: 1px solid transparent;
     border-radius: 0.5rem;
@@ -402,7 +401,7 @@ main[b-j2638y7krw] {
     transition: all .3s ease;
 }
 .delete[b-awsgoup5v0] {
-    margin-top: 1.5rem;
+    margin-top: 0;
     width: 100%;
     border: 1px solid transparent;
     border-radius: 0.5rem;
@@ -423,7 +422,8 @@ main[b-j2638y7krw] {
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 4px;
+    margin-bottom:1px;
 }
 
 /*loading*/

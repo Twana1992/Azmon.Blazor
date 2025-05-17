@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9h1URtlqlZDZU32VyFz6z7HDeBPrF5UcWjyoS1k5U6I=",
+  "Hash": "quIRGXJbbBsHf3TGoHSKQDiV6d8/7Z41k2o7iYT1LqA=",
   "Source": "Azmon.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -8111,6 +8111,25 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
+      "Identity": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\js\\Custom.js",
+      "SourceId": "Azmon.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "js/Custom.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Custom.js"
+    },
+    {
       "Identity": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap.css",
       "SourceId": "Azmon.Client",
       "SourceType": "Discovered",
@@ -10695,6 +10714,25 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\scss\\vendor\\_rfs.scss"
     },
     {
+      "Identity": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\manifest.json",
+      "SourceId": "Azmon.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "manifest.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\manifest.json"
+    },
+    {
       "Identity": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\sample-data\\weather.json",
       "SourceId": "Azmon.Client",
       "SourceType": "Discovered",
@@ -10712,6 +10750,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\sample-data\\weather.json"
+    },
+    {
+      "Identity": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\service-worker.js",
+      "SourceId": "Azmon.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "service-worker.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\service-worker.js"
     }
   ]
 }

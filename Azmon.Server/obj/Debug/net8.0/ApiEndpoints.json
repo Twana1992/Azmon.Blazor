@@ -245,6 +245,22 @@
   },
   {
     "ContainingType": "Azmon.Server.Controllers.CustomersController",
+    "Method": "CalculateAndSaveBalance",
+    "RelativePath": "api/Customers/calculate-balance/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Azmon.Server.Controllers.CustomersController",
     "Method": "SearchCustomer",
     "RelativePath": "api/Customers/Search/{query}",
     "HttpMethod": "GET",
@@ -488,6 +504,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Azmon.Server.Controllers.Sell_DetailController",
+    "Method": "GetBySellId",
+    "RelativePath": "api/Sell_Detail/SellId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Azmon.Server.Controllers.SellsController",
     "Method": "GetSell",
     "RelativePath": "api/Sells",
@@ -621,5 +653,69 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Azmon.Server.Controllers.SReportsController",
+    "Method": "OnePaymentReport",
+    "RelativePath": "api/SReports/OnePaymentReportPdf/{payId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "payId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Azmon.Server.Controllers.SReportsController",
+    "Method": "OneSellReport",
+    "RelativePath": "api/SReports/OneSellReportPdf/{SellId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "SellId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Azmon.Server.Controllers.SReportsController",
+    "Method": "GeneratePaymentReport",
+    "RelativePath": "api/SReports/PaymentReportPdf/{customerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Azmon.Server.Controllers.SReportsController",
+    "Method": "GenerateSellReport",
+    "RelativePath": "api/SReports/SellReportPdf/{customerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Azmon.Core;
+using Azmon.Server.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Azmon.Core;
-using Azmon.Server.Data;
 
 namespace Azmon.Server.Controllers
 {
@@ -84,7 +79,7 @@ namespace Azmon.Server.Controllers
             return NoContent();
         }
 
-       /* [HttpPost]
+        [HttpPost]
         public async Task<ActionResult<Sell>> PostSell(Sell sell)
         {
             try
@@ -97,25 +92,8 @@ namespace Azmon.Server.Controllers
             {
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
-        }*/
-        [HttpPost]
-        public async Task<ActionResult<Sell>> PostSell(Sell sell)
-        {
-            if (sell.Sell_Detail != null)
-            {
-                // اربط كل Sell_Detail بالبيع (عشان العلاقة تعمل)
-                foreach (var detail in sell.Sell_Detail)
-                {
-                    detail.Sell = null; // نظفي العلاقة لو وصلت من Blazor
-                    detail.Product = null;
-                }
-            }
-
-            _context.Sell.Add(sell);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetSell), new { id = sell.Id }, sell);
         }
+
 
 
         // DELETE: api/Sells/5

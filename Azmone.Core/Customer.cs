@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Azmon.Core
+﻿namespace Azmon.Core
 {
     public class Customer
     {
@@ -20,8 +14,5 @@ namespace Azmon.Core
         public DateTime AddedDate { get; set; }
         public DateTime UpdateDate { get; set; }
 
-        // Relationship
-
-        public List<Sell>? Sell { get; set; }
     }
 }

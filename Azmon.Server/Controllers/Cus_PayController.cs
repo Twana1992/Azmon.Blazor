@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Azmon.Core;
+using Azmon.Server.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Azmon.Core;
-using Azmon.Server.Data;
 
 namespace Azmon.Server.Controllers
 {
@@ -28,7 +23,7 @@ namespace Azmon.Server.Controllers
             return await _context.Cus_Pay.ToListAsync();
         }
 
-       
+
         // GET: api/Cus_Pay/Customer/5
         [HttpGet("Customer/{customerId}")]
         public async Task<ActionResult<IEnumerable<Cus_Pay>>> GetByCustomerId(int customerId)

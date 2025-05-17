@@ -12,5 +12,7 @@ builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<Cus_PayService>();
 builder.Services.AddScoped<SellService>();
 builder.Services.AddScoped<SellDetailService>();
+builder.Services.AddScoped<ReportService>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<CustomerBalanceService>();
 await builder.Build().RunAsync();

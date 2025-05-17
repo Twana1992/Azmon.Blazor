@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Azmon.Core
+﻿namespace Azmon.Core
 {
     public class B_S
     {
@@ -18,7 +12,7 @@ namespace Azmon.Core
 
         public DateTime BillDate { get; set; }
         public DateTime UpdateDate { get; set; }
-        public  List<Buy_Detail>? Details { get; set; }
-       
+        public List<Buy_Detail>? Details { get; set; }
+
     }
 }

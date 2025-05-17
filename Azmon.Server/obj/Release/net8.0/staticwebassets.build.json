@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "AiKXTdclnzjneZ2KTgcCzXmXSYARPX5a9t/kc2Yu6z8=",
+  "Source": "Azmon.Server",
+  "BasePath": "_content/Azmon.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

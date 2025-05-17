@@ -5,6 +5,7 @@ C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.
 C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.AssemblyInfoInputs.cache
 C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.AssemblyInfo.cs
 C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.sourcelink.json
 C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.dll
 C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\refint\Azmon.Core.dll
 C:\Users\DELL\source\repos\Azmon.Blazor\Azmone.Core\obj\Debug\net8.0\Azmon.Core.pdb

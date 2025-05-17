@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Azmon.Core;
+using Azmon.Server.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Azmon.Core;
-using Azmon.Server.Data;
 
 namespace Azmon.Server.Controllers
 {
@@ -26,6 +21,17 @@ namespace Azmon.Server.Controllers
         public async Task<ActionResult<IEnumerable<Sell_Detail>>> GetSell_Detail()
         {
             return await _context.Sell_Detail.ToListAsync();
+        }
+        // GET: api/Sell_Detail/SellId/31
+        [HttpGet("SellId/{id}")]
+        public async Task<IActionResult> GetBySellId(int id)
+        {
+            var details = await _context.Sell_Detail
+                                        .Where(d => d.SellId == id)
+                                        .ToListAsync();
+
+            // لا ترجعي NotFound إذا لم توجد تفاصيل، فقط ارجعي قائمة فاضية
+            return Ok(details);
         }
 
         // GET: api/Sell_Detail/5

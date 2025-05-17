@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Azmon.Client",
   "resources": {
-    "hash": "sha256-QUlvEi97XbwON/Ga6gz9154gu13I8NdySr3KYPLWbn4=",
+    "hash": "sha256-qmJcQQax1ZK9NTU89jRmoLF/reAG+/SXQ4NHUCoQF1U=",
     "jsModuleNative": {
       "dotnet.native.8.0.8.0c4gw6zl9i.js": "sha256-juC5sA7gHTLXFEhAKgdM2/RavswpwCtDfjYGsAz2FXg="
     },
@@ -211,12 +211,12 @@
       "mscorlib.wasm": "sha256-Gz8PyW2/fwihe5ul81OwmRUrU71r+KtbyRw6xlOGD+Q=",
       "netstandard.wasm": "sha256-jMTqIQzoDS810lyhZpMO5eEC36EzntXqSVn+2qwkOMQ=",
       "System.Private.CoreLib.wasm": "sha256-NFj5WE5VLP2LptZIRJCUIc1AMk06FmxpsSILfPISwAw=",
-      "Azmon.Core.wasm": "sha256-EbFTesH3jtPDcc5aDpFGbPAzwb6/FYAaoq+IsD/D1uw=",
-      "Azmon.Client.wasm": "sha256-+YUv/8vI1nySoLB2VABqTP8dCoo92YFrpFslwL4r2TA="
+      "Azmon.Core.wasm": "sha256-koLZof5QwOJe+ruR8x2hPn7YfIMjLSwMEQZbrwJaz2g=",
+      "Azmon.Client.wasm": "sha256-ELL+DaAxJsRlLbOyXNNlYhoNFXIoxG7SClcRyctrspY="
     },
     "pdb": {
-      "Azmon.Core.pdb": "sha256-42XqGu7n7sI0zh78FYya12QGBTYqUkZZQbesqTad0Bw=",
-      "Azmon.Client.pdb": "sha256-oCV7Pzyiejl45h9jXd5iZc96ULZAo5bOoRIGFIaPrgc="
+      "Azmon.Core.pdb": "sha256-ojPfVCJjR05k168iIWLSlP7dtlUCaTDk8vJUCmshh+U=",
+      "Azmon.Client.pdb": "sha256-LE8wj2QLNnFrno2ps3WJQOY8RwWsvHyiu78BA8jmrfw="
     }
   },
   "cacheBootResources": true,

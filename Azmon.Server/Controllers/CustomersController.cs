@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Azmon.Core;
+using Azmon.Server.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Azmon.Core;
-using Azmon.Server.Data;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+
+
 
 namespace Azmon.Server.Controllers
 {
@@ -122,5 +122,70 @@ namespace Azmon.Server.Controllers
 
             return customer;
         }
+
+
+
+        [HttpPut("calculate-balance/{id}")]
+        public async Task<IActionResult> CalculateAndSaveBalance(int id)
+        {
+            try
+            {
+                var customer = await _context.Customer.FirstOrDefaultAsync(c => c.Id == id);
+                if (customer == null)
+                    return NotFound("Customer not found");
+
+                // احسبي مجموع المبيعات
+                var totalpriceIQD = await _context.Sell
+                    .Where(s => s.CustomerId == id &&  s.CurrencyType == "IQD")
+                    .SumAsync(s => (decimal?)s.Price) ?? 0;
+
+                var totalPaidIQD = await _context.Sell
+                   .Where(s => s.CustomerId == id && s.CurrencyType == "IQD")
+                   .SumAsync(s => (decimal?)s.Paid) ?? 0;
+
+                var totalSalesIQD = totalpriceIQD - totalPaidIQD;
+
+                // .....................
+
+                var totalpriceUSD = await _context.Sell
+                   .Where(s => s.CustomerId == id && s.CurrencyType == "USD")
+                   .SumAsync(s => (decimal?)s.Price) ?? 0;
+
+
+                var totalPaidUSD = await _context.Sell
+                  .Where(s => s.CustomerId == id && s.CurrencyType == "USD")
+                  .SumAsync(s => (decimal?)s.Paid) ?? 0;
+
+                var totalSalesUSD = totalpriceUSD - totalPaidUSD;
+
+
+
+
+                // احسبي مجموع المدفوعات
+                var totalPaymentsIQD = await _context.Cus_Pay
+                    .Where(p => p.CusId == id)
+                    .SumAsync(p => (decimal?)p.MainAmount) ?? 0;
+
+                var totalPaymentsUSD = await _context.Cus_Pay
+                   .Where(p => p.CusId == id)
+                   .SumAsync(p => (decimal?)p.sec_Amount) ?? 0;
+                // احسبي الرصيد
+                customer.MainAmount = totalSalesIQD - totalPaymentsIQD;
+                customer.sec_Amount = totalSalesUSD - totalPaymentsUSD;
+                _context.Customer.Update(customer);
+                await _context.SaveChangesAsync();
+
+                return Ok(customer);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error: {ex.Message}");
+            }
+        }
+
+
+
+
     }
+
 }

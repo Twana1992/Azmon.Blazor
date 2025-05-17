@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Azmon.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26b5856a0458fe5f4dca25402ce12bf67acad0b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Azmon.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Azmon.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

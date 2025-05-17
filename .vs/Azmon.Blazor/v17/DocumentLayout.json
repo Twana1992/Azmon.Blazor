@@ -1,122 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{55838C0C-D842-41F3-A8C8-48BC17FC821B}|Azmon.Server\\Azmon.Server.csproj|c:\\users\\dell\\source\\repos\\azmon.blazor\\azmon.server\\controllers\\sellscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55838C0C-D842-41F3-A8C8-48BC17FC821B}|Azmon.Server\\Azmon.Server.csproj|solutionrelative:azmon.server\\controllers\\sellscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5BCBAEDC-3ED8-4D99-A69B-775E09462DF7}|Azmone.Core\\Azmon.Core.csproj|c:\\users\\dell\\source\\repos\\azmon.blazor\\azmone.core\\sell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5BCBAEDC-3ED8-4D99-A69B-775E09462DF7}|Azmone.Core\\Azmon.Core.csproj|solutionrelative:azmone.core\\sell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CB49805-4591-4B63-9FEC-FDA9A4EA7521}|Azmon.Client\\Azmon.Client.csproj|c:\\users\\dell\\source\\repos\\azmon.blazor\\azmon.client\\pages\\customer_detail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7CB49805-4591-4B63-9FEC-FDA9A4EA7521}|Azmon.Client\\Azmon.Client.csproj|solutionrelative:azmon.client\\pages\\customer_detail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CB49805-4591-4B63-9FEC-FDA9A4EA7521}|Azmon.Client\\Azmon.Client.csproj|c:\\users\\dell\\source\\repos\\azmon.blazor\\azmon.client\\pages\\customer_detail.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CB49805-4591-4B63-9FEC-FDA9A4EA7521}|Azmon.Client\\Azmon.Client.csproj|solutionrelative:azmon.client\\pages\\customer_detail.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CB49805-4591-4B63-9FEC-FDA9A4EA7521}|Azmon.Client\\Azmon.Client.csproj|c:\\users\\dell\\source\\repos\\azmon.blazor\\azmon.client\\service\\sellservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CB49805-4591-4B63-9FEC-FDA9A4EA7521}|Azmon.Client\\Azmon.Client.csproj|solutionrelative:azmon.client\\service\\sellservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55838C0C-D842-41F3-A8C8-48BC17FC821B}|Azmon.Server\\Azmon.Server.csproj|c:\\users\\dell\\source\\repos\\azmon.blazor\\azmon.server\\data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55838C0C-D842-41F3-A8C8-48BC17FC821B}|Azmon.Server\\Azmon.Server.csproj|solutionrelative:azmon.server\\data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 889,
-          "SelectedChildIndex": 3,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Sell.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmone.Core\\Sell.cs",
-              "RelativeDocumentMoniker": "Azmone.Core\\Sell.cs",
-              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmone.Core\\Sell.cs",
-              "RelativeToolTip": "Azmone.Core\\Sell.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T11:18:51.965Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SellService.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\Service\\SellService.cs",
-              "RelativeDocumentMoniker": "Azmon.Client\\Service\\SellService.cs",
-              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\Service\\SellService.cs",
-              "RelativeToolTip": "Azmon.Client\\Service\\SellService.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABoAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T11:04:31.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DBContext.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Server\\Data\\DBContext.cs",
-              "RelativeDocumentMoniker": "Azmon.Server\\Data\\DBContext.cs",
-              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Server\\Data\\DBContext.cs",
-              "RelativeToolTip": "Azmon.Server\\Data\\DBContext.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAowBUAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T09:16:09.504Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SellsController.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Server\\Controllers\\SellsController.cs",
-              "RelativeDocumentMoniker": "Azmon.Server\\Controllers\\SellsController.cs",
-              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Server\\Controllers\\SellsController.cs",
-              "RelativeToolTip": "Azmon.Server\\Controllers\\SellsController.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAHMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T09:13:40.333Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Customer_Detail.razor.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\Pages\\Customer_Detail.razor.cs",
-              "RelativeDocumentMoniker": "Azmon.Client\\Pages\\Customer_Detail.razor.cs",
-              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\Pages\\Customer_Detail.razor.cs",
-              "RelativeToolTip": "Azmon.Client\\Pages\\Customer_Detail.razor.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAAAH4AAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T07:03:20.221Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Customer_Detail.razor",
-              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\Pages\\Customer_Detail.razor",
-              "RelativeDocumentMoniker": "Azmon.Client\\Pages\\Customer_Detail.razor",
-              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\Pages\\Customer_Detail.razor",
-              "RelativeToolTip": "Azmon.Client\\Pages\\Customer_Detail.razor",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAAAFIAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-07T06:57:23.244Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

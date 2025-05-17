@@ -23,37 +23,46 @@
 @if (formState == true)
 {
     <!-- Form for Add/Edit -->
-    <EditForm Model="currentCustomer" OnValidSubmit="SaveCustomers">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-
-        <div class="form-group">
-            <label>Name:</label>
-            <InputText class="form-control" @bind-Value="currentCustomer.Name" />
+    <!-- Modal -->
+    <div class="modal fade @(formState ? "show d-block" : "")" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <EditForm Model="currentCustomer" OnValidSubmit="SaveCustomers">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="modal-header">
+                        <h5 class="modal-title">@((currentCustomer.Id == 0) ? "إضافة عميل" : "تعديل عميل")</h5>
+                        <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <InputText class="form-control" @bind-Value="currentCustomer.Name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Address:</label>
+                            <InputText class="form-control" @bind-Value="currentCustomer.Address" />
+                        </div>
+                        <div class="form-group">
+                            <label>Phone:</label>
+                            <InputText class="form-control" @bind-Value="currentCustomer.Phone" />
+                        </div>
+                        <div class="form-group">
+                            <label>Note:</label>
+                            <InputText class="form-control" @bind-Value="currentCustomer.Note" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">
+                            @(currentCustomer.Id == 0 ? "Add" : "Update")
+                        </button>
+                        <button type="button" class="btn btn-secondary" @onclick="CloseModal">Cancel</button>
+                    </div>
+                </EditForm>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Address:</label>
-            <InputText class="form-control" @bind-Value="currentCustomer.Address" />
-        </div>
-        <div class="form-group">
-            <label>Phone:</label>
-            <InputText class="form-control" @bind-Value="currentCustomer.Phone" />
-        </div>
+    </div>
 
-        <div class="form-group">
-            <label>Note:</label>
-            <InputText class="form-control" @bind-Value="currentCustomer.Note" />
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-2">
-            @(currentCustomer.Id == 0 ? "Add" : "Update")
-        </button>
-
-        @if (currentCustomer.Id != 0)
-        {
-            <button class="btn btn-secondary ms-2" @onclick="CancelEdit">Cancel</button>
-        }
-    </EditForm>
     <hr />
 
 }
@@ -89,10 +98,12 @@ else
                     <div class="info">
                         <div>
                             <p class="name" title="@cus.Name">@cus.Name</p>
-                            <p class="function">@cus.Phone</p>
-                            <p class="function">@cus.Address</p>
-                            <p class="function">@cus.Note</p>
-                            <p class="function">@cus.AddedDate</p>
+                            <p class="function">Id: @cus.Id</p>
+                            <p class="function">Phone: @cus.Phone</p>
+                            <p class="function">Address: @cus.Address</p>
+                            <p class="function">Note: @cus.Note</p>
+                            <p class="function">AddedDate: @cus.AddedDate</p>
+                            <p class="function">UpdateDate: @cus.UpdateDate</p>
                         </div>
                         <div class="stats">
                             <p class="flex flex-col"> IQD <span class="state-value"> @cus.MainAmount </span> </p>

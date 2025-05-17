@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Azmon.Core
+﻿namespace Azmon.Core
 {
     public class Cus_Pay
     {
@@ -16,11 +9,6 @@ namespace Azmon.Core
         public string? Note { get; set; }
         public DateTime AddDate { get; set; }
         public DateTime ModDate { get; set; }
-        public Customer? Customer { get; set; }
 
-        public static implicit operator List<object>(Cus_Pay? v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

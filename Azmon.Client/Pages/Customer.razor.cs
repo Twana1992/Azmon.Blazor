@@ -8,7 +8,7 @@ namespace Azmon.Client.Pages
         private List<Core.Customer>? customer;
         private string searchQuery = string.Empty;
         private bool formState = false;
-        private Core.Customer currentCustomer = new (); // used for Add/Edit
+        private Core.Customer currentCustomer = new(); // used for Add/Edit
         [Inject]
         public IJSRuntime JS { get; set; } = default!;
 
@@ -26,15 +26,16 @@ namespace Azmon.Client.Pages
         {
             formState = !formState;
 
-            if (formState) // عند الفتح
+            if (formState && currentCustomer.Id == 0) // عند الإضافة فقط
             {
-                currentCustomer = new Core.Customer(); // تهيئة النموذج
+                currentCustomer = new Core.Customer();
             }
-            else
+            else if (!formState)
             {
                 CancelEdit(); // عند الإغلاق
             }
         }
+
 
         private async Task SearchCustomers()
         {
@@ -91,8 +92,14 @@ namespace Azmon.Client.Pages
                 Note = cus.Note,
                 AddedDate = cus.AddedDate,
                 UpdateDate = DateTime.Now
+            };
+            formState = true; // عرض النموذج دون إعادة تعيين currentCustomer
+        }
 
-            }; ChangeState();
+        private void CloseModal()
+        {
+            formState = false;
+            currentCustomer = new Core.Customer();
         }
 
         private void CancelEdit()

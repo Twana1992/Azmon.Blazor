@@ -51,8 +51,6 @@ namespace Azmon.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SuppliersId");
-
                     b.ToTable("Buy");
                 });
 
@@ -81,10 +79,6 @@ namespace Azmon.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BuyId");
-
-                    b.HasIndex("ProductId");
-
                     b.ToTable("Buy_Detail");
                 });
 
@@ -102,9 +96,6 @@ namespace Azmon.Server.Migrations
                     b.Property<int>("CusId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("MainAmount")
                         .HasColumnType("decimal(18,2)");
 
@@ -118,8 +109,6 @@ namespace Azmon.Server.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Cus_Pay");
                 });
@@ -217,8 +206,6 @@ namespace Azmon.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
-
                     b.ToTable("Sell");
                 });
 
@@ -247,10 +234,6 @@ namespace Azmon.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("SellId");
-
                     b.ToTable("Sell_Detail");
                 });
 
@@ -277,15 +260,10 @@ namespace Azmon.Server.Migrations
                     b.Property<int>("SupId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SuppliersId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("sec_Amount")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SuppliersId");
 
                     b.ToTable("Sup_Pay");
                 });
@@ -409,111 +387,6 @@ namespace Azmon.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Buy", b =>
-                {
-                    b.HasOne("Azmon.Core.Suppliers", "Suppliers")
-                        .WithMany("Buy")
-                        .HasForeignKey("SuppliersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Suppliers");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Buy_Detail", b =>
-                {
-                    b.HasOne("Azmon.Core.Buy", "Buy")
-                        .WithMany("Buy_Detail")
-                        .HasForeignKey("BuyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Azmon.Core.Product", "Product")
-                        .WithMany("Buy_Details")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Buy");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Cus_Pay", b =>
-                {
-                    b.HasOne("Azmon.Core.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Sell", b =>
-                {
-                    b.HasOne("Azmon.Core.Customer", "Customer")
-                        .WithMany("Sell")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Sell_Detail", b =>
-                {
-                    b.HasOne("Azmon.Core.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Azmon.Core.Sell", "Sell")
-                        .WithMany("Sell_Detail")
-                        .HasForeignKey("SellId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Sell");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Sup_Pay", b =>
-                {
-                    b.HasOne("Azmon.Core.Suppliers", "Suppliers")
-                        .WithMany("SupPay")
-                        .HasForeignKey("SuppliersId");
-
-                    b.Navigation("Suppliers");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Buy", b =>
-                {
-                    b.Navigation("Buy_Detail");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Customer", b =>
-                {
-                    b.Navigation("Sell");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Product", b =>
-                {
-                    b.Navigation("Buy_Details");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Sell", b =>
-                {
-                    b.Navigation("Sell_Detail");
-                });
-
-            modelBuilder.Entity("Azmon.Core.Suppliers", b =>
-                {
-                    b.Navigation("Buy");
-
-                    b.Navigation("SupPay");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,23 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Azmon.Server.Data
 {
-    public class DBContext:DbContext
+    public class DBContext : DbContext
     {
-        public DBContext(DbContextOptions<DBContext> options):base(options)
+        public DBContext(DbContextOptions<DBContext> options) : base(options)
         {
-            
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Sell>()
-                .HasMany(s => s.Sell_Detail)
-                .WithOne(d => d.Sell)
-                .HasForeignKey(d => d.SellId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // إذا عندك علاقات مشابهة مع Buy_Detail أضيفيها هنا أيضًا لو حبيتي
         }
 
         public DbSet<Users> Users { get; set; }

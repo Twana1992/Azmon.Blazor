@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\js\\Custom.js",
+      "PackagePath": "staticwebassets\\js\\Custom.js"
+    },
+    {
       "Id": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-grid.css"
     },
@@ -581,8 +585,16 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\scss\\vendor\\_rfs.scss"
     },
     {
+      "Id": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\manifest.json",
+      "PackagePath": "staticwebassets\\manifest.json"
+    },
+    {
       "Id": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\source\\repos\\Azmon.Blazor\\Azmon.Client\\wwwroot\\service-worker.js",
+      "PackagePath": "staticwebassets\\service-worker.js"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Azmon.Client.Microsoft.AspNetCore.StaticWebAssets.props",
